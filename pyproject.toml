@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "esg-parsers"
+version = "0.1.0"
+description = ""
+authors = ["George <gvd2002@hotmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.32.3"
+ipykernel = "^6.29.5"
+jupyter = "^1.1.1"
+jupyterlab-lsp = "^5.1.0"
+python-lsp-server = "^1.12.2"
+plotly = "^6.0.1"
+pandas = "^2.2.3"
+numpy = "^2.2.5"
+beautifulsoup4 = "^4.13.4"
+selenium = "^4.31.0"
+tqdm = "^4.67.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
