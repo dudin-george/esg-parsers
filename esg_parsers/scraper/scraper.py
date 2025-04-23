@@ -125,7 +125,7 @@ class Scraper:
                 # Настраиваем CSV writer с правильными параметрами для экранирования
                 writer = csv.writer(
                     f, 
-                    delimiter=';',
+                    delimiter='\t',  # Используем табуляцию вместо точки с запятой
                     quotechar='"',  # Используем двойные кавычки для экранирования
                     quoting=csv.QUOTE_ALL  # Всегда экранировать все поля
                 )
@@ -260,7 +260,7 @@ class Scraper:
             # Настраиваем CSV writer с правильными параметрами для экранирования
             writer = csv.writer(
                 outfile, 
-                delimiter=';',
+                delimiter='\t',  # Используем табуляцию вместо точки с запятой
                 quotechar='"',  # Используем двойные кавычки для экранирования
                 quoting=csv.QUOTE_ALL  # Всегда экранировать все поля
             )
@@ -286,7 +286,7 @@ class Scraper:
                         # Настраиваем CSV reader с теми же параметрами
                         reader = csv.reader(
                             infile, 
-                            delimiter=';',
+                            delimiter='\t',  # Используем табуляцию вместо точки с запятой
                             quotechar='"',
                             quoting=csv.QUOTE_ALL
                         )

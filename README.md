@@ -9,7 +9,7 @@ This tool automatically scrapes, parses, and processes news articles from major 
 ## Why Use This Tool
 
 - **Automated Data Collection**: Eliminates manual searching and copying of news articles
-- **Structured Output**: Provides consistent CSV format for further analysis
+- **Structured Output**: Provides consistent TSV (Tab-Separated Values) format for further analysis
 - **Multi-source Coverage**: Pulls data from multiple reputable news sources
 - **Configurable Searches**: Search by company name and date range
 - **Concurrency**: Efficiently processes multiple searches in parallel
@@ -74,13 +74,23 @@ After processing completes, the script will output the location of the results f
 - Temporary files during processing: `esg_parsers/data/parse_run_TIMESTAMP/`
 - Final merged output: `esg_parsers/data/news_TIMESTAMP.csv`
 
+### Output Format
+
+The output files use **Tab-Separated Values (TSV)** format rather than regular CSV. This is important to know when importing the data into other tools:
+
+- When importing into Excel or other spreadsheet software, select "Tab" as the delimiter
+- When using pandas, specify `sep='\t'` in the `read_csv` function
+- The file extension remains `.csv` for backward compatibility, but the content format is TSV
+
+This format was chosen to avoid conflicts with semicolons that might appear in article content.
+
 ## How It Works
 
 1. **Request Reading**: The tool reads company and date range information from the request.csv file
 2. **Concurrent Processing**: Multiple parsers run simultaneously for different company/source combinations
 3. **Source-specific Parsing**: Each news source has a custom parser that navigates the source's structure
 4. **Data Collection**: Articles are collected, cleaned, and stored in a structured format
-5. **Results Merging**: All temporary results are combined into a single CSV output file
+5. **Results Merging**: All temporary results are combined into a single TSV output file
 
 ## Configuration Options
 
