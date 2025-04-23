@@ -1,12 +1,11 @@
 from abc import ABC, abstractmethod
 from typing import List, Dict
 from datetime import datetime
+from models import NewsArticle, CompanyDateRange
 
 class BaseParser(ABC):
-    def __init__(self, company: str, start_date: datetime, end_date: datetime):
-        self.company = company
-        self.start_date = start_date
-        self.end_date = end_date
+    def __init__(self, company_range: CompanyDateRange):
+        self.company_range = company_range
 
     def clean_text(self, text: str) -> str:
         """Clean text by replacing non-breaking spaces and other problematic characters"""
@@ -21,16 +20,11 @@ class BaseParser(ABC):
         pass
 
     @abstractmethod
-    def parse_article(self, url: str) -> Dict[str, str]:
+    def parse_article(self, url: str) -> NewsArticle:
         """Извлечь данные из новости."""
         pass
 
-    @abstractmethod
-    def super_parse(self) -> List[Dict[str, str]]:
-        """Получить список ссылок на новости + сами новости за период."""
-        pass
-
-    def parse(self) -> List[Dict[str, str]]:
+    def parse(self) -> List[NewsArticle]:
         news_urls = self.search_news()
         articles = []
         for url in news_urls:
