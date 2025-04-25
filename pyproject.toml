@@ -18,6 +18,7 @@ numpy = "^2.2.5"
 beautifulsoup4 = "^4.13.4"
 selenium = "^4.31.0"
 tqdm = "^4.67.1"
+gigachat = "^0.1.39.post1"
 
 
 [build-system]
